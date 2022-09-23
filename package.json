@@ -12,5 +12,8 @@
   "license": "ISC",
   "dependencies": {
     "unplugin": "^0.9.6"
+  },
+  "devDependencies": {
+    "@types/node": "^18.7.18"
   }
 }
