@@ -1,4 +1,4 @@
-# unplugin-link-fix
+# unplugin-link-redirect
 打包器的yarn/npm/pnpm link指令支持
 
 ## 开发背景
@@ -16,9 +16,9 @@
 ## 使用
 ``` typescript
 // webpack
-import linkFix from 'unplugin-link-fix/webpack'
+import linkFix from 'unplugin-link-redirect/webpack'
 // vite
-import linkFix from 'unplugin-link-fix/vite'
+import linkFix from 'unplugin-link-redirect/vite'
 
 export default {
   plugins: [
