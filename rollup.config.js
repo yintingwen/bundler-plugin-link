@@ -1,5 +1,6 @@
 import typescript from "rollup-plugin-typescript2";
 import cleanup from "rollup-plugin-cleanup";
+import clear from 'rollup-plugin-clear'
 
 export default {
     input: {
@@ -12,16 +13,18 @@ export default {
     output: [
       {
         dir: "dist",
-        entryFileNames: '[name].mjs',
+        chunkFileNames: "chunk-[hash].js",
+        entryFileNames: '[name].js',
         format: 'esm'
       },
       {
         dir: "dist",
-        entryFileNames: '[name].js',
-        format: 'cjs'
+        chunkFileNames: "chunk-[hash].cjs",
+        entryFileNames: '[name].cjs',
+        format: 'cjs',
       }
     ],
     external: ["fs", "path", "unplugin"],
-    plugins: [ cleanup(), typescript()]
+    plugins: [ clear({ watch: true }), cleanup(), typescript()]
 }
 

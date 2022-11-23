@@ -13,11 +13,13 @@ const unpluginLinkFix = createUnplugin((options: UnpluginLinkFixOptions) => {
   const { links = [] } = options
 
   return {
-    name: 'unplugin-link-fix',
+    name: 'unplugin-link-redirect',
     resolveId (id, importer) {
       // 没有id，没有importer，id不在修复列表中，id不是一个包)
-      if (!links.length || !id || !importer || !links.includes(id) || !libaReg.test(id)) return null
+      if (!links.length || !id || !importer || !libaReg.test(id)) return null
+      // 导入者就是link
       const isFixLib = links.some(link => importer.includes(link)) && importer.match(nodeModulesReg)?.length === 1
+      // 项目根node_modules是否有这个包
       const rootHasLib = fs.existsSync(path.resolve('node_modules', id))
       if (isFixLib && rootHasLib) {
         return path.resolve('node_modules', id)
