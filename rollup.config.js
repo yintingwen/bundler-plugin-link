@@ -25,6 +25,6 @@ export default {
       }
     ],
     external: ["fs", "path", "unplugin"],
-    plugins: [ clear({ watch: true }), cleanup(), typescript()]
+    plugins: [ clear({ watch: true, targets: ['dist']  }), cleanup(), typescript()]
 }
 
