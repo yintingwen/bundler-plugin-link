@@ -41,7 +41,6 @@ const unpluginLinkRedirect = createUnplugin((options: UnpluginLinkRedirectOption
       // 根node_modules的version和导入者node_modules的version一致，返回根node_modules的路径
       // 如果 导入者或根 node_modules下没有这个id，就是undefined，比对就失败了，无法进入if直接返回null，走原本逻辑
       if (rootPackageVersion[id] === selfPackageVersion[redirectLink][id]) {
-        console.log('???')
         return path.resolve('node_modules', id)
       }
       return null
