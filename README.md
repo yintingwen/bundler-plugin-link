@@ -32,16 +32,16 @@ webpack打包项目时，通常都是先从包自身的node_modules中寻找依�
 而这个插件则是简单的将link包中所有的依赖，全部都重定向到项目的node_modules中，避免重复打包问题。
 ## 使用
 ``` typescript
-// webpack
-import linkFix from 'unplugin-link-redirect/webpack'
-// vite
-import linkFix from 'unplugin-link-redirect/vite'
+import linkFix, { webpack, rollup, vite, esbuild } from 'unplugin-link-redirect'
 
 export default {
   plugins: [
-    linkFix({
-      links: ['你通过npm link关联的包', ...]
-    })
+    linkFix.webpack({
+     	links: ['你通过npm link关联的包', ...]
+    }),
+    webpack({
+    	links: ['你通过npm link关联的包', ...]
+    }}
   ]
 }
 ```
